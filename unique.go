@@ -1,4 +1,4 @@
-package main
+package goulash
 
 func Unique[T comparable](slice []T) []T {
 	lookup := make(map[T]bool)

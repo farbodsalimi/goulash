@@ -1,4 +1,4 @@
-package main
+package goulash
 
 func Filter[T any](slice []T, fn func(T) bool) []T {
 	var filtered []T

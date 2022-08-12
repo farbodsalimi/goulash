@@ -1,4 +1,4 @@
-package main
+package goulash
 
 func Reduce[T, M any](slice []T, fn func(M, T) M, initValue M) M {
 	accumulator := initValue
