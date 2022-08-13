@@ -18,6 +18,6 @@ func TestUnique(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, Unique(testCase.input), testCase.expect)
+		assert.Equal(t, testCase.expect, Unique(testCase.input))
 	}
 }
