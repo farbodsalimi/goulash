@@ -12,6 +12,10 @@ func TestMin(t *testing.T) {
 		expect int
 	}{
 		{
+			input:  []int{},
+			expect: 0,
+		},
+		{
 			input:  []int{3, 4, 5, 1, 2},
 			expect: 1,
 		},

@@ -22,6 +22,6 @@ func TestReduce(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, Reduce(testCase.input, testCase.fn, 0), testCase.expect)
+		assert.Equal(t, testCase.expect, Reduce(testCase.input, testCase.fn, 0))
 	}
 }

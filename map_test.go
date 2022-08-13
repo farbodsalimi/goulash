@@ -19,6 +19,6 @@ func TestMap(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, Map(testCase.input, math.Pow10), testCase.expect)
+		assert.Equal(t, testCase.expect, Map(testCase.input, math.Pow10))
 	}
 }

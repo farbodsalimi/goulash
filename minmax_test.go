@@ -13,6 +13,11 @@ func TestMinMax(t *testing.T) {
 		expectMax int
 	}{
 		{
+			input:     []int{},
+			expectMin: 0,
+			expectMax: 0,
+		},
+		{
 			input:     []int{3, 4, 5, 1, 2},
 			expectMin: 1,
 			expectMax: 5,

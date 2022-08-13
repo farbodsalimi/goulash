@@ -29,6 +29,6 @@ func TestFilter(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, Filter(testCase.input, testCase.fn), testCase.expect)
+		assert.Equal(t, testCase.expect, Filter(testCase.input, testCase.fn))
 	}
 }

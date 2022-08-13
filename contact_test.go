@@ -20,6 +20,10 @@ func TestContact(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, Concat(testCase.input1, testCase.input2), testCase.expect)
+		assert.Equal(
+			t,
+			testCase.expect,
+			Concat(testCase.input1, testCase.input2),
+		)
 	}
 }
