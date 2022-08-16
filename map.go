@@ -1,9 +1,9 @@
 package goulash
 
-func Map[T any, M any](a []T, f func(T) M) []M {
-	n := make([]M, len(a))
-	for i, e := range a {
-		n[i] = f(e)
+func Map[T any, M any](slice []T, fn func(currentValue T) M) []M {
+	n := make([]M, len(slice))
+	for index, value := range slice {
+		n[index] = fn(value)
 	}
 	return n
 }

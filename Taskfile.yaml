@@ -1,0 +1,10 @@
+version: '3'
+
+tasks:
+  test:
+    cmds:
+     - go test -v -coverprofile=coverage.out ./...
+  default:
+    cmds:
+      - go build ./...
+    silent: true
