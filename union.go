@@ -5,10 +5,10 @@ func Union[T comparable](slices ...[]T) []T {
 	lookup := make(map[T]bool)
 
 	for _, slice := range slices {
-		for _, item := range slice {
-			if _, ok := lookup[item]; !ok {
-				result = append(result, item)
-				lookup[item] = true
+		for _, value := range slice {
+			if _, ok := lookup[value]; !ok {
+				result = append(result, value)
+				lookup[value] = true
 			}
 		}
 	}

@@ -5,16 +5,16 @@ import "golang.org/x/exp/constraints"
 func Difference[T constraints.Ordered](slice1 []T, slice2 []T) []T {
 	lookup := map[T]int{}
 
-	for _, s := range slice1 {
-		lookup[s]++
+	for _, value := range slice1 {
+		lookup[value]++
 	}
-	for _, s := range slice2 {
-		lookup[s]--
+	for _, value := range slice2 {
+		lookup[value]--
 	}
 
 	result := []T{}
-	for s, v := range lookup {
-		if v != 0 {
+	for s, value := range lookup {
+		if value != 0 {
 			result = append(result, s)
 		}
 	}

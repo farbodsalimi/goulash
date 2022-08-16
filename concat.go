@@ -1,11 +1,9 @@
 package goulash
 
-func Concat[T any](args ...[]T) []T {
-	var result []T
-
-	for _, v := range args {
-		result = append(result, v...)
+func Concat[T any](slices ...[]T) []T {
+	result := []T{}
+	for _, slice := range slices {
+		result = append(result, slice...)
 	}
-
 	return result
 }
