@@ -11,7 +11,7 @@ func Sort[T constraints.Ordered](slice []T) []T {
 	copy(toBeSorted, slice)
 
 	sort.Slice(toBeSorted, func(i, j int) bool {
-		return slice[i] < slice[j]
+		return toBeSorted[i] < toBeSorted[j]
 	})
 
 	return toBeSorted
