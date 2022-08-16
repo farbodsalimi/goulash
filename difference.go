@@ -1,11 +1,23 @@
 package goulash
 
-// func Difference[T any](slices ...[]T) []T {
-// 	var result []T
-// 	for _, slice := range slices {
-// 		for _, value := range slice {
+import "golang.org/x/exp/constraints"
 
-// 		}
-// 	}
-// 	return result
-// }
+func Difference[T constraints.Ordered](slice1 []T, slice2 []T) []T {
+	lookup := map[T]int{}
+
+	for _, s := range slice1 {
+		lookup[s]++
+	}
+	for _, s := range slice2 {
+		lookup[s]--
+	}
+
+	result := []T{}
+	for s, v := range lookup {
+		if v != 0 {
+			result = append(result, s)
+		}
+	}
+
+	return result
+}
