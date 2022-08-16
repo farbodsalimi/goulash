@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestContact(t *testing.T) {
+func TestConcat(t *testing.T) {
 	testCases := []struct {
 		input1 []int
 		input2 []int
