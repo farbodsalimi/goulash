@@ -15,6 +15,7 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
     - [Filter](#filter)
     - [Difference](#difference)
     - [ForEach](#foreach)
+    - [Intersection](#intersection)
     - [GroupBy](#groupby)
     - [Map](#map)
     - [Max](#max)
@@ -74,6 +75,13 @@ index := args[0].(int)
 forEachResult = append(forEachResult, []int{index, value})
 })
 fmt.Println(forEachResult) // [[0 1] [1 2] [2 3]]
+```
+
+### Intersection
+
+```go
+intersected := goulash.Intersection([]string{"a", "b", "c", "d", "e"}, []string{"d", "e"})
+fmt.Println(intersected) // ["d", "e"]
 ```
 
 ### GroupBy
