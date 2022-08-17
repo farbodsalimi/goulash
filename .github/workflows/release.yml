@@ -28,6 +28,8 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set GitHub Actions as commit author
         shell: bash
@@ -56,6 +58,8 @@ jobs:
     needs: [tag]
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Semantic Versioning
         run: |
@@ -70,6 +74,7 @@ jobs:
 
       - name: Create release notes
         run: |
+          git tag -l
           git sv rn -t "${{ needs.tag.outputs.tag }}" > release-notes.md
 
       - name: Release
