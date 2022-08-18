@@ -7,8 +7,8 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-// All returns true only if every element in slice evaluates to true
-func All[T constraints.Ordered](slice []T) bool {
+// Any returns true only if any element in slice evaluates to true
+func Any[T constraints.Ordered](slice []T) bool {
 	for _, value := range slice {
 		parsedGeneric := utils.ParseGeneric(value)
 
@@ -25,17 +25,17 @@ func All[T constraints.Ordered](slice []T) bool {
 			reflect.Uint64,
 			reflect.Float32,
 			reflect.Float64:
-			if parsedGeneric.Value.IsZero() {
-				return false
+			if !parsedGeneric.Value.IsZero() {
+				return true
 			}
 
 		case reflect.String:
 			s := parsedGeneric.Value.String()
-			if s == "" || len(s) == 0 {
-				return false
+			if s != "" && len(s) != 0 {
+				return true
 			}
 		}
 	}
 
-	return true
+	return false
 }
