@@ -10,6 +10,7 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 - [goulash](#goulash)
 	- [Functions](#functions)
 		- [All](#all)
+		- [Any](#any)
 		- [Chunk](#chunk)
 		- [Compact](#compact)
 		- [Concat](#concat)
@@ -26,6 +27,7 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 		- [MinMax](#minmax)
 		- [Reduce](#reduce)
 		- [Sort](#sort)
+		- [Teranary](#teranary)
 		- [Union](#union)
 		- [Unique](#unique)
 		- [Values](#values)
@@ -37,49 +39,56 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 ### All
 
 ```go
-result := goulash.All([]float64{3.1, 4.1, 5.1, 1.1, 0})
+result := __.All([]float64{3.1, 4.1, 5.1, 1.1, 0})
 fmt.Println(result) // false
+```
+
+### Any
+
+```go
+result := __.Any([]float64{3.1, 4.1, 5.1, 1.1, 0})
+fmt.Println(result) // true
 ```
 
 ### Chunk
 
 ```go
-chunks := goulash.Chunk([]int{1, 2, 3, 4}, 2)
+chunks := __.Chunk([]int{1, 2, 3, 4}, 2)
 fmt.Println(chunks) // [[1 2] [3 4]]
 ```
 
 ### Compact
 
 ```go
-compacted := goulash.Compact([]int{0, 1, 2, 3})
+compacted := __.Compact([]int{0, 1, 2, 3})
 fmt.Println(compacted) // [1 2 3]
 ```
 
 ### Concat
 
 ```go
-concatenated := goulash.Concat([]int{1, 2, 3}, []int{4, 5, 6, 7})
+concatenated := __.Concat([]int{1, 2, 3}, []int{4, 5, 6, 7})
 fmt.Println(concatenated) // [1 2 3 4 5 6 7]
 ```
 
 ### Contains
 
 ```go
-result := goulash.Contains([]float64{3.1, 4.1, 5.1, 1.1, -2.1}, -2.1)
+result := __.Contains([]float64{3.1, 4.1, 5.1, 1.1, -2.1}, -2.1)
 fmt.Println(result) // true
 ```
 
 ### Difference
 
 ```go
-diff := goulash.Difference([]int{1, 2, 3}, []int{1, 2})
+diff := __.Difference([]int{1, 2, 3}, []int{1, 2})
 fmt.Println(diff) // [3]
 ```
 
 ### Filter
 
 ```go
-filtered := goulash.Filter([]int{1, 2, 3, 4, 5, 6}, func(n int) bool {
+filtered := __.Filter([]int{1, 2, 3, 4, 5, 6}, func(n int) bool {
 	return n%2 == 1
 })
 fmt.Println(filtered) // [1 3 5]
@@ -89,7 +98,7 @@ fmt.Println(filtered) // [1 3 5]
 
 ```go
 var forEachResult [][]int
-goulash.ForEach([]int{1, 2, 3}, func(value int, args ...any) {
+__.ForEach([]int{1, 2, 3}, func(value int, args ...any) {
 	index := args[0].(int)
 	forEachResult = append(forEachResult, []int{index, value})
 })
@@ -99,56 +108,56 @@ fmt.Println(forEachResult) // [[0 1] [1 2] [2 3]]
 ### GroupBy
 
 ```go
-grouped := goulash.GroupBy([]float64{6.1, 4.2, 6.3}, math.Floor)
+grouped := __.GroupBy([]float64{6.1, 4.2, 6.3}, math.Floor)
 fmt.Println(grouped) // map[4:[4.2] 6:[6.1 6.3]]
 ```
 
 ### Intersection
 
 ```go
-intersected := goulash.Intersection([]string{"a", "b", "c", "d", "e"}, []string{"d", "e"})
+intersected := __.Intersection([]string{"a", "b", "c", "d", "e"}, []string{"d", "e"})
 fmt.Println(intersected) // ["d", "e"]
 ```
 
 ### Keys
 
 ```go
-keys := goulash.Keys(map[string]string{"key1": "value", "key2": "value", "key3": "value"})
+keys := __.Keys(map[string]string{"key1": "value", "key2": "value", "key3": "value"})
 fmt.Println(keys) // ["key1", "key2", "key3"
 ```
 
 ### Map
 
 ```go
-mapped := goulash.Map([]int{1, 2, 3}, math.Pow10)
+mapped := __.Map([]int{1, 2, 3}, math.Pow10)
 fmt.Println(mapped) // [10 100 1000]
 ```
 
 ### Max
 
 ```go
-maxResult := goulash.Max([]float32{6.1, 4.2, 6.3}...)
+maxResult := __.Max([]float32{6.1, 4.2, 6.3}...)
 fmt.Println(maxResult) // 6.3
 ```
 
 ### Min
 
 ```go
-minResult := goulash.Min([]float64{6.1, 4.2, 6.3}...)
+minResult := __.Min([]float64{6.1, 4.2, 6.3}...)
 fmt.Println(minResult) // 4.2
 ```
 
 ### MinMax
 
 ```go
-min, max := goulash.MinMax([]float64{6.1, 4.2, 6.3}...)
+min, max := __.MinMax([]float64{6.1, 4.2, 6.3}...)
 fmt.Println(min, max) // 4.2 6.3
 ```
 
 ### Reduce
 
 ```go
-reduced := goulash.Reduce([]uint{6, 7, 8}, func(a uint, b uint) uint {
+reduced := __.Reduce([]uint{6, 7, 8}, func(a uint, b uint) uint {
 	return a + b
 }, 0)
 fmt.Println(reduced) // 21
@@ -157,28 +166,35 @@ fmt.Println(reduced) // 21
 ### Sort
 
 ```go
-sorted := goulash.Sort([]int{6, 1, 2, 3, -1, 0, 4, 7, 5})
+sorted := __.Sort([]int{6, 1, 2, 3, -1, 0, 4, 7, 5})
 fmt.Println(sorted) // [-1 0 1 2 3 4 5 6 7]
+```
+
+### Teranary
+
+```go
+result := __.Ternary((2 + 2) == 4, "yup", "nope")
+fmt.Println(result) // yup
 ```
 
 ### Union
 
 ```go
-unified := goulash.Union([][]int{{1, 2}, {2, 3, 4}, {3, 4, 5, 6, 7}}...)
+unified := __.Union([][]int{{1, 2}, {2, 3, 4}, {3, 4, 5, 6, 7}}...)
 fmt.Println(unified) // [1 2 3 4 5 6 7]
 ```
 
 ### Unique
 
 ```go
-uniq := goulash.Unique([]int{1, 1, 1, 1, 2, 3})
+uniq := __.Unique([]int{1, 1, 1, 1, 2, 3})
 fmt.Println(uniq) // [1 2 3]
 ```
 
 ### Values
 
 ```go
-values := goulash.Values(map[string]string{"key1": "value1", "key2": "value2", "key3": "value3"})
+values := __.Values(map[string]string{"key1": "value1", "key2": "value2", "key3": "value3"})
 fmt.Println(values) // ["value1", "value2", "value3"
 ```
 
