@@ -8,27 +8,28 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 **Table of Contents**
 
 - [goulash](#goulash)
-  - [Functions](#functions)
-    - [Chunk](#chunk)
-    - [Compact](#compact)
-    - [Concat](#concat)
-    - [Contains](#contains)
-    - [Difference](#difference)
-    - [Filter](#filter)
-    - [ForEach](#foreach)
-    - [GroupBy](#groupby)
-    - [Intersection](#intersection)
-    - [Keys](#keys)
-    - [Map](#map)
-    - [Max](#max)
-    - [Min](#min)
-    - [MinMax](#minmax)
-    - [Reduce](#reduce)
-    - [Sort](#sort)
-    - [Union](#union)
-    - [Unique](#unique)
-  - [Examples:](#examples)
-    - [Map Reduce Filter](#map-reduce-filter)
+	- [Functions](#functions)
+		- [Chunk](#chunk)
+		- [Compact](#compact)
+		- [Concat](#concat)
+		- [Contains](#contains)
+		- [Difference](#difference)
+		- [Filter](#filter)
+		- [ForEach](#foreach)
+		- [GroupBy](#groupby)
+		- [Intersection](#intersection)
+		- [Keys](#keys)
+		- [Map](#map)
+		- [Max](#max)
+		- [Min](#min)
+		- [MinMax](#minmax)
+		- [Reduce](#reduce)
+		- [Sort](#sort)
+		- [Union](#union)
+		- [Unique](#unique)
+		- [Values](#values)
+	- [Examples:](#examples)
+		- [Map Reduce Filter](#map-reduce-filter)
 
 ## Functions
 
@@ -164,6 +165,13 @@ fmt.Println(unified) // [1 2 3 4 5 6 7]
 ```go
 uniq := goulash.Unique([]int{1, 1, 1, 1, 2, 3})
 fmt.Println(uniq) // [1 2 3]
+```
+
+### Values
+
+```go
+values := goulash.Values(map[string]string{"key1": "value1", "key2": "value2", "key3": "value3"})
+fmt.Println(values) // ["value1", "value2", "value3"
 ```
 
 ## Examples:
