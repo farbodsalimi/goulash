@@ -163,7 +163,7 @@ func TestContainsFloat64(t *testing.T) {
 	}
 }
 
-func TestContainsString(t *testing.T) {
+func TestContainsSliceString(t *testing.T) {
 	testCases := []struct {
 		element string
 		input   []string
@@ -245,6 +245,39 @@ func TestContainsMapString(t *testing.T) {
 		{
 			element: "key2",
 			input:   map[string]string{"key1": "value", "key2": "value", "key3": "value"},
+			expect:  true,
+		},
+	}
+
+	for _, testCase := range testCases {
+		assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+	}
+}
+
+func TestContainsString(t *testing.T) {
+	testCases := []struct {
+		element string
+		input   string
+		expect  bool
+	}{
+		{
+			element: "hello",
+			input:   "",
+			expect:  false,
+		},
+		{
+			element: "hello",
+			input:   "Hello, World!",
+			expect:  false,
+		},
+		{
+			element: "llo",
+			input:   "Hello, World!",
+			expect:  true,
+		},
+		{
+			element: "Hello",
+			input:   "Hello, World!",
 			expect:  true,
 		},
 	}
