@@ -8,6 +8,9 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 **Table of Contents**
 
 - [goulash](#goulash)
+	- [Quick Start](#quick-start)
+		- [Installation](#installation)
+		- [Example](#example)
 	- [Functions](#functions)
 		- [All](#all)
 		- [Any](#any)
@@ -31,8 +34,52 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 		- [Union](#union)
 		- [Unique](#unique)
 		- [Values](#values)
-	- [Examples:](#examples)
-		- [Map Reduce Filter](#map-reduce-filter)
+
+## Quick Start
+
+### Installation
+
+```sh
+go get github.com/farbodsalimi/goulash
+```
+
+### Example
+
+```go
+package main
+
+import (
+	"fmt"
+
+	__ "github.com/farbodsalimi/goulash"
+)
+
+type Player struct {
+	id    int
+	name  string
+	score float64
+	bonus float64
+}
+
+func main() {
+	slice := []Player{
+		{id: 1, name: "David", score: 20, bonus: 15},
+		{id: 2, name: "Jessica", score: 10, bonus: 25},
+		{id: 3, name: "Alex", score: 40, bonus: 45},
+		{id: 4, name: "Tom", score: 30, bonus: 25},
+	}
+
+	totalScore := __.Reduce(__.Map(__.Filter(slice, func(p Player) bool {
+		return len(p.name) > 4
+	}), func(p Player) float64 {
+		return p.score + p.bonus
+	}), func(acc, newScore float64) float64 {
+		return acc + newScore
+	}, 0)
+
+	fmt.Println(totalScore)
+}
+```
 
 ## Functions
 
@@ -196,44 +243,4 @@ fmt.Println(uniq) // [1 2 3]
 ```go
 values := __.Values(map[string]string{"key1": "value1", "key2": "value2", "key3": "value3"})
 fmt.Println(values) // ["value1", "value2", "value3"
-```
-
-## Examples:
-
-### Map Reduce Filter
-
-```go
-package main
-
-import (
-	"fmt"
-
-	__ "github.com/farbodsalimi/goulash"
-)
-
-type Player struct {
-	id    int
-	name  string
-	score float64
-	bonus float64
-}
-
-func main() {
-	slice := []Player{
-		{id: 1, name: "David", score: 20, bonus: 15},
-		{id: 2, name: "Jessica", score: 10, bonus: 25},
-		{id: 3, name: "Alex", score: 40, bonus: 45},
-		{id: 4, name: "Tom", score: 30, bonus: 25},
-	}
-
-	totalScore := __.Reduce(__.Map(__.Filter(slice, func(p Player) bool {
-		return len(p.name) > 4
-	}), func(p Player) float64 {
-		return p.score + p.bonus
-	}), func(acc, newScore float64) float64 {
-		return acc + newScore
-	}, 0)
-
-	fmt.Println(totalScore)
-}
 ```
