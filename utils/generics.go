@@ -9,14 +9,13 @@ type Generic struct {
 }
 
 func ParseGeneric(generic any) (g *Generic) {
-	g = &Generic{
-		Value: reflect.ValueOf(generic),
-	}
+	value := reflect.ValueOf(generic)
+	kind := value.Kind()
+	gtype := value.Type()
 
-	if !g.Value.IsZero() {
-		g.Type = g.Value.Type()
-		g.Kind = g.Value.Kind()
+	return &Generic{
+		Value: value,
+		Kind:  kind,
+		Type:  gtype,
 	}
-
-	return g
 }

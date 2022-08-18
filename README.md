@@ -9,6 +9,7 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 
 - [goulash](#goulash)
 	- [Functions](#functions)
+		- [All](#all)
 		- [Chunk](#chunk)
 		- [Compact](#compact)
 		- [Concat](#concat)
@@ -32,6 +33,13 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 		- [Map Reduce Filter](#map-reduce-filter)
 
 ## Functions
+
+### All
+
+```go
+result := goulash.All([]float64{3.1, 4.1, 5.1, 1.1, 0})
+fmt.Println(result) // false
+```
 
 ### Chunk
 
