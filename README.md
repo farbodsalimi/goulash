@@ -27,6 +27,8 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
     - [Sort](#sort)
     - [Union](#union)
     - [Unique](#unique)
+  - [Examples:](#examples)
+    - [Map Reduce Filter](#map-reduce-filter)
 
 ## Functions
 
@@ -68,9 +70,8 @@ fmt.Println(diff) // [3]
 ### Filter
 
 ```go
-filtered := goulash.Filter([]int{1, 2, 3, 4, 5, 6},
-func(n int) bool {
-  return n%2 == 1
+filtered := goulash.Filter([]int{1, 2, 3, 4, 5, 6}, func(n int) bool {
+	return n%2 == 1
 })
 fmt.Println(filtered) // [1 3 5]
 ```
@@ -80,8 +81,8 @@ fmt.Println(filtered) // [1 3 5]
 ```go
 var forEachResult [][]int
 goulash.ForEach([]int{1, 2, 3}, func(value int, args ...any) {
-  index := args[0].(int)
-  forEachResult = append(forEachResult, []int{index, value})
+	index := args[0].(int)
+	forEachResult = append(forEachResult, []int{index, value})
 })
 fmt.Println(forEachResult) // [[0 1] [1 2] [2 3]]
 ```
@@ -139,7 +140,7 @@ fmt.Println(min, max) // 4.2 6.3
 
 ```go
 reduced := goulash.Reduce([]uint{6, 7, 8}, func(a uint, b uint) uint {
-  return a + b
+	return a + b
 }, 0)
 fmt.Println(reduced) // 21
 ```
@@ -163,4 +164,44 @@ fmt.Println(unified) // [1 2 3 4 5 6 7]
 ```go
 uniq := goulash.Unique([]int{1, 1, 1, 1, 2, 3})
 fmt.Println(uniq) // [1 2 3]
+```
+
+## Examples:
+
+### Map Reduce Filter
+
+```go
+package main
+
+import (
+	"fmt"
+
+	__ "github.com/farbodsalimi/goulash"
+)
+
+type Player struct {
+	id    int
+	name  string
+	score float64
+	bonus float64
+}
+
+func main() {
+	slice := []Player{
+		{id: 1, name: "David", score: 20, bonus: 15},
+		{id: 2, name: "Jessica", score: 10, bonus: 25},
+		{id: 3, name: "Alex", score: 40, bonus: 45},
+		{id: 4, name: "Tom", score: 30, bonus: 25},
+	}
+
+	totalScore := __.Reduce(__.Map(__.Filter(slice, func(p Player) bool {
+		return len(p.name) > 4
+	}), func(p Player) float64 {
+		return p.score + p.bonus
+	}), func(acc, newScore float64) float64 {
+		return acc + newScore
+	}, 0)
+
+	fmt.Println(totalScore)
+}
 ```
