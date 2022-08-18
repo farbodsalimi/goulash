@@ -23,6 +23,7 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 		- [ForEach](#foreach)
 		- [GroupBy](#groupby)
 		- [Intersection](#intersection)
+		- [Join](#join)
 		- [Keys](#keys)
 		- [Map](#map)
 		- [Max](#max)
@@ -164,6 +165,23 @@ fmt.Println(grouped) // map[4:[4.2] 6:[6.1 6.3]]
 ```go
 intersected := __.Intersection([]string{"a", "b", "c", "d", "e"}, []string{"d", "e"})
 fmt.Println(intersected) // ["d", "e"]
+```
+
+### Join
+
+```go
+joined := __.Join([]uint{1, 2, 3, 4}, ", ")
+fmt.Println(joined) // 1, 2, 3, 4
+```
+
+```go
+joined := __.Join([]float64{1.1, 2.1, 3.1, 1.1, 2.1, 3.1}, "~")
+fmt.Println(joined) // 1.1~2.1~3.1~1.1~2.1~3.1
+```
+
+```go
+joined := __.Join([]string{"a", "b", "c", "d"}, "*")
+fmt.Println(joined) // a*b*c*d
 ```
 
 ### Keys
