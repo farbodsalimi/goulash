@@ -12,11 +12,13 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
     - [Chunk](#chunk)
     - [Compact](#compact)
     - [Concat](#concat)
-    - [Filter](#filter)
+    - [Contains](#contains)
     - [Difference](#difference)
+    - [Filter](#filter)
     - [ForEach](#foreach)
-    - [Intersection](#intersection)
     - [GroupBy](#groupby)
+    - [Intersection](#intersection)
+    - [Keys](#keys)
     - [Map](#map)
     - [Max](#max)
     - [Min](#min)
@@ -49,6 +51,20 @@ concatenated := goulash.Concat([]int{1, 2, 3}, []int{4, 5, 6, 7})
 fmt.Println(concatenated) // [1 2 3 4 5 6 7]
 ```
 
+### Contains
+
+```go
+result := goulash.Contains([]float64{3.1, 4.1, 5.1, 1.1, -2.1}, -2.1)
+fmt.Println(result) // true
+```
+
+### Difference
+
+```go
+diff := goulash.Difference([]int{1, 2, 3}, []int{1, 2})
+fmt.Println(diff) // [3]
+```
+
 ### Filter
 
 ```go
@@ -57,13 +73,6 @@ func(n int) bool {
 return n%2 == 1
 })
 fmt.Println(filtered) // [1 3 5]
-```
-
-### Difference
-
-```go
-diff := goulash.Difference([]int{1, 2, 3}, []int{1, 2})
-fmt.Println(diff) // [3]
 ```
 
 ### ForEach
@@ -77,6 +86,13 @@ forEachResult = append(forEachResult, []int{index, value})
 fmt.Println(forEachResult) // [[0 1] [1 2] [2 3]]
 ```
 
+### GroupBy
+
+```go
+grouped := goulash.GroupBy([]float64{6.1, 4.2, 6.3}, math.Floor)
+fmt.Println(grouped) // map[4:[4.2] 6:[6.1 6.3]]
+```
+
 ### Intersection
 
 ```go
@@ -84,11 +100,11 @@ intersected := goulash.Intersection([]string{"a", "b", "c", "d", "e"}, []string{
 fmt.Println(intersected) // ["d", "e"]
 ```
 
-### GroupBy
+### Keys
 
 ```go
-grouped := goulash.GroupBy([]float64{6.1, 4.2, 6.3}, math.Floor)
-fmt.Println(grouped) // map[4:[4.2] 6:[6.1 6.3]]
+keys := goulash.Keys(map[string]string{"key1": "value", "key2": "value", "key3": "value"})
+fmt.Println(keys) // ["key1", "key2", "key3"
 ```
 
 ### Map
