@@ -70,7 +70,7 @@ fmt.Println(diff) // [3]
 ```go
 filtered := goulash.Filter([]int{1, 2, 3, 4, 5, 6},
 func(n int) bool {
-return n%2 == 1
+  return n%2 == 1
 })
 fmt.Println(filtered) // [1 3 5]
 ```
@@ -80,8 +80,8 @@ fmt.Println(filtered) // [1 3 5]
 ```go
 var forEachResult [][]int
 goulash.ForEach([]int{1, 2, 3}, func(value int, args ...any) {
-index := args[0].(int)
-forEachResult = append(forEachResult, []int{index, value})
+  index := args[0].(int)
+  forEachResult = append(forEachResult, []int{index, value})
 })
 fmt.Println(forEachResult) // [[0 1] [1 2] [2 3]]
 ```
@@ -139,7 +139,7 @@ fmt.Println(min, max) // 4.2 6.3
 
 ```go
 reduced := goulash.Reduce([]uint{6, 7, 8}, func(a uint, b uint) uint {
-return a + b
+  return a + b
 }, 0)
 fmt.Println(reduced) // 21
 ```
