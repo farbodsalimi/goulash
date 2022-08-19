@@ -1,13 +1,15 @@
-# goulash
+# Goulash
 
 [![Pipeline](https://github.com/farbodsalimi/goulash/actions/workflows/go.yml/badge.svg)](https://github.com/farbodsalimi/goulash/actions/workflows/go.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/farbodsalimi/goulash?r)](https://goreportcard.com/report/github.com/farbodsalimi/goulash)
+[![Maintainability](https://api.codeclimate.com/v1/badges/41c658c64749a3221cf5/maintainability)](https://codeclimate.com/github/farbodsalimi/goulash/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/41c658c64749a3221cf5/test_coverage)](https://codeclimate.com/github/farbodsalimi/goulash/test_coverage)
 
-goulash provides a bunch of useful functional programming helpers leveraging generics.
+Goulash provides a bunch of useful functional programming helpers leveraging Go generics.
 
 **Table of Contents**
 
-- [goulash](#goulash)
+- [Goulash](#goulash)
 	- [Quick Start](#quick-start)
 		- [Installation](#installation)
 		- [Example](#example)
@@ -31,7 +33,7 @@ goulash provides a bunch of useful functional programming helpers leveraging gen
 		- [MinMax](#minmax)
 		- [Reduce](#reduce)
 		- [Sort](#sort)
-		- [Teranary](#teranary)
+		- [Ternary](#ternary)
 		- [Union](#union)
 		- [Unique](#unique)
 		- [Values](#values)
@@ -63,14 +65,14 @@ type Player struct {
 }
 
 func main() {
-	slice := []Player{
+	players := []Player{
 		{id: 1, name: "David", score: 20, bonus: 15},
 		{id: 2, name: "Jessica", score: 10, bonus: 25},
 		{id: 3, name: "Alex", score: 40, bonus: 45},
 		{id: 4, name: "Tom", score: 30, bonus: 25},
 	}
 
-	totalScore := __.Reduce(__.Map(__.Filter(slice, func(p Player) bool {
+	totalScore := __.Reduce(__.Map(__.Filter(players, func(p Player) bool {
 		return len(p.name) > 4
 	}), func(p Player) float64 {
 		return p.score + p.bonus
@@ -235,7 +237,7 @@ sorted := __.Sort([]int{6, 1, 2, 3, -1, 0, 4, 7, 5})
 fmt.Println(sorted) // [-1 0 1 2 3 4 5 6 7]
 ```
 
-### Teranary
+### Ternary
 
 ```go
 result := __.Ternary((2 + 2) == 4, "yup", "nope")
