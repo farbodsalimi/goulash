@@ -30,5 +30,6 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: 8d42a832e932bae5dd7cffb05e4f2661b6c4aef5a6e376bec585cd1ec10c324d
         with:
+          prefix: github.com/farbodsalimi/goulash
           coverageCommand: go test -v --race -covermode=atomic -coverprofile=coverage.out ./...
           coverageLocations: ${{github.workspace}}/coverage.out:gocov
