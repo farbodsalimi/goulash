@@ -1,9 +1,12 @@
-version: '3'
+version: "3"
 
 tasks:
   test:
     cmds:
-     - go test -v -coverprofile=coverage.out ./...
+      - go test -v -coverprofile=coverage.out ./...
+  show-cover:
+    cmds:
+      - dokimi report --input=coverage.out --output=coverage.json --reporter=istanbul --show
   default:
     cmds:
       - go build ./...
