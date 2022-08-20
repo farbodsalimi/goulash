@@ -112,7 +112,7 @@ func TestReduceFloat32(t *testing.T) {
 		{
 			name:   "Slices with odd number of elements",
 			input:  []float32{1.1, 2.1, 3.1},
-			expect: 6.3,
+			expect: 6.2999997,
 			fn:     sumUintFn,
 		},
 		{
