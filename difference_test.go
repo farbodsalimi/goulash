@@ -7,7 +7,10 @@ import (
 )
 
 func TestDifferenceInt(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input1 []int
 		input2 []int
 		expect []int
@@ -45,13 +48,20 @@ func TestDifferenceInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := Difference(testCase.input1, testCase.input2)
-		assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			actual := Difference(testCase.input1, testCase.input2)
+			assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		})
 	}
 }
 
 func TestDifferenceUint(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input1 []uint
 		input2 []uint
 		expect []uint
@@ -89,13 +99,20 @@ func TestDifferenceUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := Difference(testCase.input1, testCase.input2)
-		assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			actual := Difference(testCase.input1, testCase.input2)
+			assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		})
 	}
 }
 
 func TestDifferenceFloat32(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input1 []float32
 		input2 []float32
 		expect []float32
@@ -133,13 +150,20 @@ func TestDifferenceFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := Difference(testCase.input1, testCase.input2)
-		assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			actual := Difference(testCase.input1, testCase.input2)
+			assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		})
 	}
 }
 
 func TestDifferenceFloat64(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input1 []float64
 		input2 []float64
 		expect []float64
@@ -177,13 +201,20 @@ func TestDifferenceFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := Difference(testCase.input1, testCase.input2)
-		assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			actual := Difference(testCase.input1, testCase.input2)
+			assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		})
 	}
 }
 
 func TestDifferenceString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input1 []string
 		input2 []string
 		expect []string
@@ -211,7 +242,11 @@ func TestDifferenceString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		actual := Difference(testCase.input1, testCase.input2)
-		assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			actual := Difference(testCase.input1, testCase.input2)
+			assert.ElementsMatch(t, Sort(testCase.expect), Sort(actual))
+		})
 	}
 }

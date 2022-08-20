@@ -85,6 +85,8 @@ func TestAllUint(t *testing.T) {
 }
 
 func TestAllFloat32(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
 		name   string
 		input  []float32
@@ -122,6 +124,8 @@ func TestAllFloat32(t *testing.T) {
 }
 
 func TestAllFloat64(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
 		name   string
 		input  []float64
@@ -159,6 +163,8 @@ func TestAllFloat64(t *testing.T) {
 }
 
 func TestAllString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
 		name   string
 		input  []string

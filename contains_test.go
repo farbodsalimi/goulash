@@ -7,7 +7,10 @@ import (
 )
 
 func TestContainsInt(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name    string
 		element int
 		input   []int
 		expect  bool
@@ -45,12 +48,19 @@ func TestContainsInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		})
 	}
 }
 
 func TestContainsUint(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name    string
 		element int
 		input   []uint
 		expect  bool
@@ -83,12 +93,19 @@ func TestContainsUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		})
 	}
 }
 
 func TestContainsFloat32(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name    string
 		element float32
 		input   []float32
 		expect  bool
@@ -121,12 +138,19 @@ func TestContainsFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		})
 	}
 }
 
 func TestContainsFloat64(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name    string
 		element float64
 		input   []float64
 		expect  bool
@@ -159,12 +183,19 @@ func TestContainsFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		})
 	}
 }
 
 func TestContainsSliceString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name    string
 		element string
 		input   []string
 		expect  bool
@@ -202,12 +233,19 @@ func TestContainsSliceString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		})
 	}
 }
 
 func TestContainsMapString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name    string
 		element string
 		input   map[string]string
 		expect  bool
@@ -250,12 +288,19 @@ func TestContainsMapString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		})
 	}
 }
 
 func TestContainsString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name    string
 		element string
 		input   string
 		expect  bool
@@ -283,6 +328,10 @@ func TestContainsString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Contains(testCase.input, testCase.element))
+		})
 	}
 }

@@ -7,7 +7,10 @@ import (
 )
 
 func TestMax(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []int
 		expect int
 	}{
@@ -34,6 +37,10 @@ func TestMax(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Max(testCase.input...))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Max(testCase.input...))
+		})
 	}
 }

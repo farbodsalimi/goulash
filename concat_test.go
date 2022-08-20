@@ -7,7 +7,10 @@ import (
 )
 
 func TestConcat(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input1 []int
 		input2 []int
 		expect []int
@@ -20,10 +23,14 @@ func TestConcat(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(
-			t,
-			testCase.expect,
-			Concat(testCase.input1, testCase.input2),
-		)
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(
+				t,
+				testCase.expect,
+				Concat(testCase.input1, testCase.input2),
+			)
+		})
 	}
 }

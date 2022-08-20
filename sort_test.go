@@ -7,7 +7,10 @@ import (
 )
 
 func TestSortInt(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []int
 		expect []int
 	}{
@@ -30,12 +33,19 @@ func TestSortInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Sort(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Sort(testCase.input))
+		})
 	}
 }
 
 func TestSortString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []string
 		expect []string
 	}{
@@ -54,6 +64,10 @@ func TestSortString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Sort(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Sort(testCase.input))
+		})
 	}
 }

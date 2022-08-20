@@ -7,7 +7,10 @@ import (
 )
 
 func TestKeysMapString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  map[string]string
 		expect []string
 	}{
@@ -35,6 +38,10 @@ func TestKeysMapString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.ElementsMatch(t, testCase.expect, Keys(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.ElementsMatch(t, testCase.expect, Keys(testCase.input))
+		})
 	}
 }

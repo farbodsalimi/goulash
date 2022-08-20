@@ -7,7 +7,10 @@ import (
 )
 
 func TestCompactInt(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []int
 		expect []int
 	}{
@@ -30,12 +33,19 @@ func TestCompactInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Compact(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Compact(testCase.input))
+		})
 	}
 }
 
 func TestCompactUint(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []uint
 		expect []uint
 	}{
@@ -58,12 +68,19 @@ func TestCompactUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Compact(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Compact(testCase.input))
+		})
 	}
 }
 
 func TestCompactFloat32(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []float32
 		expect []float32
 	}{
@@ -86,12 +103,19 @@ func TestCompactFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Compact(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Compact(testCase.input))
+		})
 	}
 }
 
 func TestCompactFloat64(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []float64
 		expect []float64
 	}{
@@ -114,12 +138,19 @@ func TestCompactFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Compact(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Compact(testCase.input))
+		})
 	}
 }
 
 func TestCompactString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []string
 		expect []string
 	}{
@@ -142,6 +173,10 @@ func TestCompactString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Compact(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Compact(testCase.input))
+		})
 	}
 }

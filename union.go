@@ -1,7 +1,7 @@
 package goulash
 
 func Union[T comparable](slices ...[]T) []T {
-	var result []T
+	result := []T{}
 	lookup := make(map[T]bool)
 
 	for _, slice := range slices {

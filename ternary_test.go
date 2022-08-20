@@ -7,7 +7,10 @@ import (
 )
 
 func TestTernary(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name        string
 		condition   bool
 		exprIfTrue  string
 		exprIfFalse string
@@ -28,10 +31,14 @@ func TestTernary(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(
-			t,
-			testCase.expect,
-			Ternary(testCase.condition, testCase.exprIfTrue, testCase.exprIfFalse),
-		)
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(
+				t,
+				testCase.expect,
+				Ternary(testCase.condition, testCase.exprIfTrue, testCase.exprIfFalse),
+			)
+		})
 	}
 }

@@ -7,7 +7,10 @@ import (
 )
 
 func TestReduce(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []int
 		expect int
 		fn     func(a int, b int) int
@@ -22,6 +25,10 @@ func TestReduce(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Reduce(testCase.input, testCase.fn, 0))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Reduce(testCase.input, testCase.fn, 0))
+		})
 	}
 }

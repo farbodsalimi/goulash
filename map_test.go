@@ -8,7 +8,10 @@ import (
 )
 
 func TestMap(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []int
 		expect []float64
 	}{
@@ -19,6 +22,10 @@ func TestMap(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Map(testCase.input, math.Pow10))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Map(testCase.input, math.Pow10))
+		})
 	}
 }

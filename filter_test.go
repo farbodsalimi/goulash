@@ -7,7 +7,10 @@ import (
 )
 
 func TestFilter(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []int
 		expect []int
 		fn     func(int) bool
@@ -29,6 +32,10 @@ func TestFilter(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Filter(testCase.input, testCase.fn))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Filter(testCase.input, testCase.fn))
+		})
 	}
 }

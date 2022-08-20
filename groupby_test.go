@@ -8,7 +8,10 @@ import (
 )
 
 func TestGroupBy(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []float64
 		expect map[float64][]float64
 	}{

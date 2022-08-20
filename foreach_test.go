@@ -7,7 +7,10 @@ import (
 )
 
 func TestForEach(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []int
 		expect [][]int
 	}{

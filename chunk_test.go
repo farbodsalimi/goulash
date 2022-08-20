@@ -7,7 +7,10 @@ import (
 )
 
 func TestChunkInt(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		size   int
 		input  []int
 		expect [][]int
@@ -45,12 +48,19 @@ func TestChunkInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		})
 	}
 }
 
 func TestChunkUint(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		size   int
 		input  []uint
 		expect [][]uint
@@ -83,12 +93,19 @@ func TestChunkUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		})
 	}
 }
 
 func TestChunkFloat32(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		size   int
 		input  []float32
 		expect [][]float32
@@ -121,12 +138,19 @@ func TestChunkFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		})
 	}
 }
 
 func TestChunkFloat64(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		size   int
 		input  []float64
 		expect [][]float64
@@ -159,12 +183,19 @@ func TestChunkFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		})
 	}
 }
 
 func TestChunkString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		size   int
 		input  []string
 		expect [][]string
@@ -197,6 +228,10 @@ func TestChunkString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
+		})
 	}
 }

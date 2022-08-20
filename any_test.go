@@ -7,7 +7,10 @@ import (
 )
 
 func TestAnyInt(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []int
 		expect bool
 	}{
@@ -34,12 +37,19 @@ func TestAnyInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Any(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Any(testCase.input))
+		})
 	}
 }
 
 func TestAnyUint(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []uint
 		expect bool
 	}{
@@ -66,12 +76,19 @@ func TestAnyUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Any(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Any(testCase.input))
+		})
 	}
 }
 
 func TestAnyFloat32(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []float32
 		expect bool
 	}{
@@ -98,12 +115,19 @@ func TestAnyFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Any(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Any(testCase.input))
+		})
 	}
 }
 
 func TestAnyFloat64(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []float64
 		expect bool
 	}{
@@ -130,12 +154,19 @@ func TestAnyFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Any(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Any(testCase.input))
+		})
 	}
 }
 
 func TestAnyString(t *testing.T) {
+	t.Parallel()
+
 	testCases := []struct {
+		name   string
 		input  []string
 		expect bool
 	}{
@@ -166,6 +197,10 @@ func TestAnyString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		assert.Equal(t, testCase.expect, Any(testCase.input))
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			assert.Equal(t, testCase.expect, Any(testCase.input))
+		})
 	}
 }
