@@ -1,6 +1,7 @@
 # Goulash
 
 [![Pipeline](https://github.com/farbodsalimi/goulash/actions/workflows/go.yml/badge.svg)](https://github.com/farbodsalimi/goulash/actions/workflows/go.yml)
+[![Release](https://github.com/farbodsalimi/goulash/actions/workflows/release.yml/badge.svg)](https://github.com/farbodsalimi/goulash/actions/workflows/release.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/farbodsalimi/goulash?r)](https://goreportcard.com/report/github.com/farbodsalimi/goulash)
 [![Maintainability](https://api.codeclimate.com/v1/badges/41c658c64749a3221cf5/maintainability)](https://codeclimate.com/github/farbodsalimi/goulash/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/41c658c64749a3221cf5/test_coverage)](https://codeclimate.com/github/farbodsalimi/goulash/test_coverage)
