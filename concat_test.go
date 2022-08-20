@@ -16,6 +16,7 @@ func TestConcat(t *testing.T) {
 		expect []int
 	}{
 		{
+			name:   "Empty slices",
 			input1: []int{1, 2, 3},
 			input2: []int{4, 5, 6},
 			expect: []int{1, 2, 3, 4, 5, 6},

@@ -15,14 +15,17 @@ func TestKeysMapString(t *testing.T) {
 		expect []string
 	}{
 		{
+			name:   "Empty map",
 			input:  map[string]string{},
 			expect: []string{},
 		},
 		{
+			name:   "Map with 1 element",
 			input:  map[string]string{"key": "value"},
 			expect: []string{"key"},
 		},
 		{
+			name: "Map with distinct keys/values",
 			input: map[string]string{
 				"key1": "value1",
 				"key2": "value2",
@@ -32,6 +35,7 @@ func TestKeysMapString(t *testing.T) {
 			expect: []string{"key1", "key2", "key3", "key4"},
 		},
 		{
+			name:   "Map with identical values",
 			input:  map[string]string{"key1": "value", "key2": "value", "key3": "value"},
 			expect: []string{"key1", "key2", "key3"},
 		},

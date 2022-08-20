@@ -15,7 +15,7 @@ func TestUniqueInt(t *testing.T) {
 		expect []int
 	}{
 		{
-			name:   "Empty slices",
+			name:   "Empty slice",
 			input:  []int{},
 			expect: []int{},
 		},
@@ -54,7 +54,7 @@ func TestUniqueUint(t *testing.T) {
 		expect []uint
 	}{
 		{
-			name:   "Empty slices",
+			name:   "Empty slice",
 			input:  []uint{},
 			expect: []uint{},
 		},
@@ -93,7 +93,7 @@ func TestUniqueFloat32(t *testing.T) {
 		expect []float32
 	}{
 		{
-			name:   "Empty slices",
+			name:   "Empty slice",
 			input:  []float32{},
 			expect: []float32{},
 		},
@@ -132,7 +132,7 @@ func TestUniqueFloat64(t *testing.T) {
 		expect []float64
 	}{
 		{
-			name:   "Empty slices",
+			name:   "Empty slice",
 			input:  []float64{},
 			expect: []float64{},
 		},
@@ -171,7 +171,7 @@ func TestUniqueString(t *testing.T) {
 		expect []string
 	}{
 		{
-			name:   "Empty slices",
+			name:   "Empty slice",
 			input:  []string{},
 			expect: []string{},
 		},

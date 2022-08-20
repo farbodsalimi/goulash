@@ -17,12 +17,14 @@ func TestTernary(t *testing.T) {
 		expect      string
 	}{
 		{
+			name:        "Wrong 2+2 answer",
 			condition:   (2 + 2) == 5,
 			exprIfTrue:  "yup",
 			exprIfFalse: "nope",
 			expect:      "nope",
 		},
 		{
+			name:        "Correct 2+2 answer",
 			condition:   (2 + 2) == 4,
 			exprIfTrue:  "yup",
 			exprIfFalse: "nope",
