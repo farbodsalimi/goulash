@@ -23,6 +23,7 @@ Goulash provides a bunch of useful functional programming helpers leveraging Go 
 		- [Contains](#contains)
 		- [Difference](#difference)
 		- [Filter](#filter)
+		- [Fold](#fold)
 		- [ForEach](#foreach)
 		- [GroupBy](#groupby)
 		- [Intersection](#intersection)
@@ -143,6 +144,15 @@ filtered := __.Filter([]int{1, 2, 3, 4, 5, 6}, func(n int) bool {
 	return n%2 == 1
 })
 fmt.Println(filtered) // [1 3 5]
+```
+
+### Fold
+
+```go
+folded := __.Fold([]int{1, 2, 3}, 0, func(a int, b int) int {
+	return a + b
+})
+fmt.Println(folded) // 6
 ```
 
 ### ForEach
