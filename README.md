@@ -6,7 +6,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/41c658c64749a3221cf5/maintainability)](https://codeclimate.com/github/farbodsalimi/goulash/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/41c658c64749a3221cf5/test_coverage)](https://codeclimate.com/github/farbodsalimi/goulash/test_coverage)
 
-Goulash provides a bunch of useful functional programming helpers leveraging Go generics.
+Goulash offers a variety of useful utility functions for everyday programming tasks by leveraging Go generics and keeping the functional programming paradigm in mind.
 
 **Table of Contents**
 
