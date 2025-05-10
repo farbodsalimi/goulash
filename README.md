@@ -23,6 +23,7 @@ Goulash offers a variety of useful utility functions for everyday programming ta
 		- [Contains](#contains)
 		- [Difference](#difference)
 		- [Filter](#filter)
+		- [FlatMap](#flatmap)
 		- [Fold](#fold)
 		- [ForEach](#foreach)
 		- [GroupBy](#groupby)
@@ -144,6 +145,15 @@ filtered := __.Filter([]int{1, 2, 3, 4, 5, 6}, func(n int) bool {
 	return n%2 == 1
 })
 fmt.Println(filtered) // [1 3 5]
+```
+
+### FlatMap
+
+```go
+flatten := __.FlatMap([]string{"it's sunny in", "", "California"}, func(s string) []string {
+	return strings.Split(s, " ")
+})
+fmt.Println(flatten) // ["it's", "sunny", "in", "", "California"]
 ```
 
 ### Fold
