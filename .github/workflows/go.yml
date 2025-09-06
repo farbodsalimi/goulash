@@ -12,12 +12,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: ^1.18
+          go-version: ^1.24
 
       - name: Build
         run: go build -v ./...
@@ -25,11 +25,10 @@ jobs:
       - name: Test
         run: go test -v
 
-      - name: Coverage
-        uses: paambaati/codeclimate-action@v3.0.0
-        env:
-          CC_TEST_REPORTER_ID: 8d42a832e932bae5dd7cffb05e4f2661b6c4aef5a6e376bec585cd1ec10c324d
-        with:
-          prefix: github.com/farbodsalimi/goulash
-          coverageCommand: go test -v --race -covermode=atomic -coverprofile=coverage.out ./...
-          coverageLocations: ${{github.workspace}}/coverage.out:gocov
+      # - name: Coverage
+      #   uses: qltysh/qlty-action/coverage@v2
+      #   with:
+      #     token: 8d42a832e932bae5dd7cffb05e4f2661b6c4aef5a6e376bec585cd1ec10c324d
+      #     add-prefix: github.com/farbodsalimi/goulash
+      #     command: go test -v --race -covermode=atomic -coverprofile=coverage.out ./...
+      #     files: ${{github.workspace}}/coverage.out:gocov

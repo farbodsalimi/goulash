@@ -40,6 +40,7 @@ Goulash offers a variety of useful utility functions for everyday programming ta
 		- [Union](#union)
 		- [Unique](#unique)
 		- [Values](#values)
+		- [Zip](#zip)
 
 ## Quick Start
 
@@ -283,5 +284,12 @@ fmt.Println(uniq) // [1 2 3]
 
 ```go
 values := __.Values(map[string]string{"key1": "value1", "key2": "value2", "key3": "value3"})
-fmt.Println(values) // ["value1", "value2", "value3"
+fmt.Println(values) // ["value1", "value2", "value3"]
+```
+
+### Zip
+
+```go
+zipped := __.Zip([]int{1, 2, 3}, []string{"a", "b"})
+fmt.Println(zipped) // []Pair[int, string]{{First: 1, Second: "a"}, {First: 2, Second: "b"}}
 ```
