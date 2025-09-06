@@ -26,10 +26,9 @@ jobs:
         run: go test -v
 
       - name: Coverage
-        uses: paambaati/codeclimate-action@v9.0.0
-        env:
-          CC_TEST_REPORTER_ID: 8d42a832e932bae5dd7cffb05e4f2661b6c4aef5a6e376bec585cd1ec10c324d
+        uses: qltysh/qlty-action/coverage@v2
         with:
-          prefix: github.com/farbodsalimi/goulash
-          coverageCommand: go test -v --race -covermode=atomic -coverprofile=coverage.out ./...
-          coverageLocations: ${{github.workspace}}/coverage.out:gocov
+          token: 8d42a832e932bae5dd7cffb05e4f2661b6c4aef5a6e376bec585cd1ec10c324d
+          add-prefix: github.com/farbodsalimi/goulash
+          command: go test -v --race -covermode=atomic -coverprofile=coverage.out ./...
+          files: ${{github.workspace}}/coverage.out:gocov
