@@ -17,7 +17,7 @@ func TestFold(t *testing.T) {
 
 	actual2 := Fold[string]([]string{"a", "b", "c"}, "", func(a string, b string) string {
 		if a == "" {
-			return fmt.Sprintf("%s", b)
+			return b
 		}
 		return fmt.Sprintf("%s:%s", a, b)
 	})

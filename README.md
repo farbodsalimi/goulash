@@ -18,25 +18,48 @@ Goulash offers a variety of useful utility functions for everyday programming ta
 		- [All](#all)
 		- [Any](#any)
 		- [Chunk](#chunk)
+		- [Combinations](#combinations)
 		- [Compact](#compact)
 		- [Concat](#concat)
 		- [Contains](#contains)
+		- [Count](#count)
 		- [Difference](#difference)
+		- [Drop](#drop)
+		- [DropWhile](#dropwhile)
 		- [Filter](#filter)
+		- [Find](#find)
+		- [FindIndex](#findindex)
 		- [FlatMap](#flatmap)
+		- [Flatten](#flatten)
 		- [Fold](#fold)
 		- [ForEach](#foreach)
 		- [GroupBy](#groupby)
+		- [IndexOf](#indexof)
 		- [Intersection](#intersection)
 		- [Join](#join)
 		- [Keys](#keys)
+		- [LastIndexOf](#lastindexof)
 		- [Map](#map)
 		- [Max](#max)
 		- [Min](#min)
 		- [MinMax](#minmax)
+		- [None](#none)
+		- [Partition](#partition)
+		- [Permutations](#permutations)
+		- [Product](#product)
+		- [RandomSample](#randomsample)
+		- [Range](#range)
 		- [Reduce](#reduce)
+		- [Repeat](#repeat)
+		- [Reverse](#reverse)
+		- [Scan](#scan)
+		- [Sliding](#sliding)
 		- [Sort](#sort)
+		- [Sum](#sum)
+		- [Take](#take)
+		- [TakeWhile](#takewhile)
 		- [Ternary](#ternary)
+		- [Transpose](#transpose)
 		- [Union](#union)
 		- [Unique](#unique)
 		- [Values](#values)
@@ -111,6 +134,13 @@ chunks := __.Chunk([]int{1, 2, 3, 4}, 2)
 fmt.Println(chunks) // [[1 2] [3 4]]
 ```
 
+### Combinations
+
+```go
+combs := __.Combinations([]int{1, 2, 3, 4}, 2)
+fmt.Println(combs) // [[1 2] [1 3] [1 4] [2 3] [2 4] [3 4]]
+```
+
 ### Compact
 
 ```go
@@ -132,11 +162,36 @@ result := __.Contains([]float64{3.1, 4.1, 5.1, 1.1, -2.1}, -2.1)
 fmt.Println(result) // true
 ```
 
+### Count
+
+```go
+evenCount := __.Count([]int{1, 2, 3, 4, 5}, func(n int) bool {
+	return n%2 == 0
+})
+fmt.Println(evenCount) // 2
+```
+
 ### Difference
 
 ```go
 diff := __.Difference([]int{1, 2, 3}, []int{1, 2})
 fmt.Println(diff) // [3]
+```
+
+### Drop
+
+```go
+afterFirst2 := __.Drop([]int{1, 2, 3, 4, 5}, 2)
+fmt.Println(afterFirst2) // [3 4 5]
+```
+
+### DropWhile
+
+```go
+dropped := __.DropWhile([]int{1, 2, 3, 4, 5}, func(n int) bool {
+	return n < 4
+})
+fmt.Println(dropped) // [4 5]
 ```
 
 ### Filter
@@ -148,6 +203,24 @@ filtered := __.Filter([]int{1, 2, 3, 4, 5, 6}, func(n int) bool {
 fmt.Println(filtered) // [1 3 5]
 ```
 
+### Find
+
+```go
+found, exists := __.Find([]int{1, 2, 3, 4, 5}, func(n int) bool {
+	return n > 3
+})
+fmt.Println(found, exists) // 4 true
+```
+
+### FindIndex
+
+```go
+index := __.FindIndex([]string{"a", "b", "c"}, func(s string) bool {
+	return s == "b"
+})
+fmt.Println(index) // 1
+```
+
 ### FlatMap
 
 ```go
@@ -155,6 +228,13 @@ flatten := __.FlatMap([]string{"it's sunny in", "", "California"}, func(s string
 	return strings.Split(s, " ")
 })
 fmt.Println(flatten) // ["it's", "sunny", "in", "", "California"]
+```
+
+### Flatten
+
+```go
+flattened := __.Flatten([][]int{{1, 2}, {3, 4}, {5}})
+fmt.Println(flattened) // [1 2 3 4 5]
 ```
 
 ### Fold
@@ -182,6 +262,13 @@ fmt.Println(forEachResult) // [[0 1] [1 2] [2 3]]
 ```go
 grouped := __.GroupBy([]float64{6.1, 4.2, 6.3}, math.Floor)
 fmt.Println(grouped) // map[4:[4.2] 6:[6.1 6.3]]
+```
+
+### IndexOf
+
+```go
+index := __.IndexOf([]string{"a", "b", "c", "b"}, "b")
+fmt.Println(index) // 1
 ```
 
 ### Intersection
@@ -215,6 +302,13 @@ keys := __.Keys(map[string]string{"key1": "value", "key2": "value", "key3": "val
 fmt.Println(keys) // ["key1", "key2", "key3"
 ```
 
+### LastIndexOf
+
+```go
+lastIndex := __.LastIndexOf([]string{"a", "b", "c", "b"}, "b")
+fmt.Println(lastIndex) // 3
+```
+
 ### Map
 
 ```go
@@ -243,6 +337,53 @@ min, max := __.MinMax([]float64{6.1, 4.2, 6.3}...)
 fmt.Println(min, max) // 4.2 6.3
 ```
 
+### None
+
+```go
+hasEven := __.None([]int{1, 3, 5}, func(n int) bool {
+	return n%2 == 0
+})
+fmt.Println(hasEven) // true
+```
+
+### Partition
+
+```go
+evens, odds := __.Partition([]int{1, 2, 3, 4, 5}, func(n int) bool {
+	return n%2 == 0
+})
+fmt.Println(evens) // [2 4]
+fmt.Println(odds)  // [1 3 5]
+```
+
+### Permutations
+
+```go
+perms := __.Permutations([]int{1, 2, 3})
+fmt.Println(len(perms)) // 6 (all permutations)
+```
+
+### Product
+
+```go
+result := __.Product([]int{2, 3, 4})
+fmt.Println(result) // 24
+```
+
+### RandomSample
+
+```go
+sample := __.RandomSample([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 3)
+fmt.Println(sample) // [random selection of 3 elements]
+```
+
+### Range
+
+```go
+numbers := __.Range(1, 5)
+fmt.Println(numbers) // [1 2 3 4]
+```
+
 ### Reduce
 
 ```go
@@ -252,6 +393,36 @@ reduced := __.Reduce([]uint{6, 7, 8}, func(a uint, b uint) uint {
 fmt.Println(reduced) // 21
 ```
 
+### Repeat
+
+```go
+repeated := __.Repeat("hello", 3)
+fmt.Println(repeated) // ["hello" "hello" "hello"]
+```
+
+### Reverse
+
+```go
+reversed := __.Reverse([]int{1, 2, 3, 4, 5})
+fmt.Println(reversed) // [5 4 3 2 1]
+```
+
+### Scan
+
+```go
+cumSum := __.Scan([]int{1, 2, 3, 4}, func(acc, n int) int {
+	return acc + n
+}, 0)
+fmt.Println(cumSum) // [0 1 3 6 10]
+```
+
+### Sliding
+
+```go
+windows := __.Sliding([]int{1, 2, 3, 4, 5}, 3)
+fmt.Println(windows) // [[1 2 3] [2 3 4] [3 4 5]]
+```
+
 ### Sort
 
 ```go
@@ -259,11 +430,42 @@ sorted := __.Sort([]int{6, 1, 2, 3, -1, 0, 4, 7, 5})
 fmt.Println(sorted) // [-1 0 1 2 3 4 5 6 7]
 ```
 
+### Sum
+
+```go
+total := __.Sum([]int{1, 2, 3, 4, 5})
+fmt.Println(total) // 15
+```
+
+### Take
+
+```go
+first3 := __.Take([]int{1, 2, 3, 4, 5}, 3)
+fmt.Println(first3) // [1 2 3]
+```
+
+### TakeWhile
+
+```go
+taken := __.TakeWhile([]int{1, 2, 3, 4, 1}, func(n int) bool {
+	return n < 4
+})
+fmt.Println(taken) // [1 2 3]
+```
+
 ### Ternary
 
 ```go
 result := __.Ternary((2 + 2) == 4, "yup", "nope")
 fmt.Println(result) // yup
+```
+
+### Transpose
+
+```go
+matrix := [][]int{{1, 2, 3}, {4, 5, 6}}
+transposed := __.Transpose(matrix)
+fmt.Println(transposed) // [[1 4] [2 5] [3 6]]
 ```
 
 ### Union

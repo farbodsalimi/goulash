@@ -9,11 +9,7 @@ func GroupBy[T constraints.Ordered, M constraints.Ordered](
 	grouped := make(map[M][]T, len(slice))
 	for _, value := range slice {
 		key := fn(value)
-		if _, ok := grouped[key]; ok {
-			grouped[key] = append(grouped[key], value)
-		} else {
-			grouped[key] = []T{value}
-		}
+		grouped[key] = append(grouped[key], value)
 	}
 	return grouped
 }
