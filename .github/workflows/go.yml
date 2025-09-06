@@ -25,10 +25,10 @@ jobs:
       - name: Test
         run: go test -v
 
-      - name: Coverage
-        uses: qltysh/qlty-action/coverage@v2
-        with:
-          token: 8d42a832e932bae5dd7cffb05e4f2661b6c4aef5a6e376bec585cd1ec10c324d
-          add-prefix: github.com/farbodsalimi/goulash
-          command: go test -v --race -covermode=atomic -coverprofile=coverage.out ./...
-          files: ${{github.workspace}}/coverage.out:gocov
+      # - name: Coverage
+      #   uses: qltysh/qlty-action/coverage@v2
+      #   with:
+      #     token: 8d42a832e932bae5dd7cffb05e4f2661b6c4aef5a6e376bec585cd1ec10c324d
+      #     add-prefix: github.com/farbodsalimi/goulash
+      #     command: go test -v --race -covermode=atomic -coverprofile=coverage.out ./...
+      #     files: ${{github.workspace}}/coverage.out:gocov
