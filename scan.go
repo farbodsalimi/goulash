@@ -1,5 +1,7 @@
 package goulash
 
+// Scan applies a function cumulatively to the items of a slice,
+// returning a slice of successive accumulated values.
 func Scan[T, M any](slice []T, fn func(M, T) M, initValue M) []M {
 	if len(slice) == 0 {
 		return []M{initValue}

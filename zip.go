@@ -9,7 +9,7 @@ func Zip[T any, U any](ts []T, us []U) []Pair[T, U] {
 	minLen := Min(len(ts), len(us))
 
 	result := make([]Pair[T, U], minLen)
-	for i := 0; i < minLen; i++ {
+	for i := range minLen {
 		result[i] = Pair[T, U]{
 			First:  ts[i],
 			Second: us[i],

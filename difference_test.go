@@ -54,7 +54,6 @@ func TestDifferenceInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Difference(testCase.input1, testCase.input2)
@@ -111,7 +110,6 @@ func TestDifferenceUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Difference(testCase.input1, testCase.input2)
@@ -168,7 +166,6 @@ func TestDifferenceFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Difference(testCase.input1, testCase.input2)
@@ -225,7 +222,6 @@ func TestDifferenceFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Difference(testCase.input1, testCase.input2)
@@ -270,7 +266,6 @@ func TestDifferenceString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Difference(testCase.input1, testCase.input2)

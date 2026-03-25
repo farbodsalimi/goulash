@@ -18,7 +18,7 @@ func RandomSample[T any](slice []T, count int) []T {
 
 	indices := r.Perm(len(slice))
 	result := make([]T, count)
-	for i := 0; i < count; i++ {
+	for i := range count {
 		result[i] = slice[indices[i]]
 	}
 

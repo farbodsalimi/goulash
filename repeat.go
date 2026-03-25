@@ -6,7 +6,7 @@ func Repeat[T any](item T, count int) []T {
 	}
 
 	result := make([]T, count)
-	for i := 0; i < count; i++ {
+	for i := range count {
 		result[i] = item
 	}
 	return result
