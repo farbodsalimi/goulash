@@ -8,7 +8,7 @@ func Chunk[T any](slice []T, size int) [][]T {
 	chunks := [][]T{}
 	for i := 0; i < len(slice); i += size {
 		end := min(i+size, len(slice))
-		chunks = append(chunks, slice[i:end])
+		chunks = append(chunks, append([]T{}, slice[i:end]...))
 	}
 	return chunks
 }

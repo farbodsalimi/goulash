@@ -4,31 +4,31 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-
-	"github.com/farbodsalimi/goulash/utils"
 )
 
 func Contains[T, M any](object T, element M) bool {
-	parsedObject := utils.ParseGeneric(object)
-	parsedElement := utils.ParseGeneric(element)
+	objVal := reflect.ValueOf(object)
+	elemStr := fmt.Sprint(element)
 
-	switch parsedObject.Kind {
+	switch objVal.Kind() {
 	case reflect.Slice, reflect.Array:
-		for i := 0; i < parsedObject.Value.Len(); i++ {
-			if fmt.Sprint(parsedObject.Value.Index(i)) == fmt.Sprint(parsedElement.Value) {
+		for i := 0; i < objVal.Len(); i++ {
+			if fmt.Sprint(objVal.Index(i).Interface()) == elemStr {
 				return true
 			}
 		}
 
 	case reflect.Map:
-		for _, key := range parsedObject.Value.MapKeys() {
-			if fmt.Sprint(key) == fmt.Sprint(parsedElement.Value) {
+		for _, key := range objVal.MapKeys() {
+			if fmt.Sprint(key.Interface()) == elemStr {
 				return true
 			}
 		}
 
 	case reflect.String:
-		return strings.Contains(parsedObject.Value.String(), parsedElement.Value.String())
+		if elem, ok := any(element).(string); ok {
+			return strings.Contains(objVal.String(), elem)
+		}
 	}
 
 	return false
