@@ -50,7 +50,7 @@ Each utility function follows this pattern:
 ### Dependencies
 - `golang.org/x/exp/constraints` - For generic type constraints
 - `github.com/stretchr/testify` - Testing framework
-- Uses Go 1.25 features
+- Uses Go 1.26 features
 
 ### Key Design Patterns
 1. **Generic Functions**: All functions use Go generics with appropriate constraints

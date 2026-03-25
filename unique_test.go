@@ -37,7 +37,6 @@ func TestUniqueInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Unique(testCase.input))
@@ -76,7 +75,6 @@ func TestUniqueUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Unique(testCase.input))
@@ -115,7 +113,6 @@ func TestUniqueFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Unique(testCase.input))
@@ -154,7 +151,6 @@ func TestUniqueFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Unique(testCase.input))
@@ -193,7 +189,6 @@ func TestUniqueString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Unique(testCase.input))

@@ -29,7 +29,6 @@ func TestMapInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Map(testCase.input, math.Pow10))
@@ -58,7 +57,6 @@ func TestMapFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Map(testCase.input, math.Float32bits))
@@ -87,7 +85,6 @@ func TestMapFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Map(testCase.input, math.Log))
@@ -116,7 +113,6 @@ func TestMapString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Map(testCase.input, strings.Fields))

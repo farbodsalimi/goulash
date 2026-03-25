@@ -37,7 +37,6 @@ func TestAllInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, All(testCase.input))
@@ -76,7 +75,6 @@ func TestAllUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, All(testCase.input))
@@ -115,7 +113,6 @@ func TestAllFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, All(testCase.input))
@@ -154,7 +151,6 @@ func TestAllFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, All(testCase.input))
@@ -193,7 +189,6 @@ func TestAllString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, All(testCase.input))

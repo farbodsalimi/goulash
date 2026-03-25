@@ -54,7 +54,6 @@ func TestChunkInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
@@ -104,7 +103,6 @@ func TestChunkUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
@@ -154,7 +152,6 @@ func TestChunkFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
@@ -204,7 +201,6 @@ func TestChunkFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))
@@ -254,7 +250,6 @@ func TestChunkString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Chunk(testCase.input, testCase.size))

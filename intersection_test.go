@@ -54,7 +54,6 @@ func TestIntersectionInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Intersection(testCase.input1, testCase.input2)
@@ -111,7 +110,6 @@ func TestIntersectionUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Intersection(testCase.input1, testCase.input2)
@@ -168,7 +166,6 @@ func TestIntersectionFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Intersection(testCase.input1, testCase.input2)
@@ -225,7 +222,6 @@ func TestIntersectionFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Intersection(testCase.input1, testCase.input2)
@@ -282,7 +278,6 @@ func TestIntersectionString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			actual := Intersection(testCase.input1, testCase.input2)

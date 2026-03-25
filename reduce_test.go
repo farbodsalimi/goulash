@@ -40,7 +40,6 @@ func TestReduceInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Reduce(testCase.input, testCase.fn, 0))
@@ -82,7 +81,6 @@ func TestReduceUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Reduce(testCase.input, testCase.fn, 0))
@@ -124,7 +122,6 @@ func TestReduceFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Reduce(testCase.input, testCase.fn, 0))
@@ -166,7 +163,6 @@ func TestReduceFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Reduce(testCase.input, testCase.fn, 0))
@@ -212,7 +208,6 @@ func TestReduceString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(

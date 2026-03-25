@@ -35,7 +35,6 @@ func TestJoinInt(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Join(testCase.input, testCase.delimiter))
@@ -72,7 +71,6 @@ func TestJoinUint(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Join(testCase.input, testCase.delimiter))
@@ -109,7 +107,6 @@ func TestJoinFloat32(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Join(testCase.input, testCase.delimiter))
@@ -146,7 +143,6 @@ func TestJoinFloat64(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Join(testCase.input, testCase.delimiter))
@@ -183,7 +179,6 @@ func TestJoinString(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			assert.Equal(t, testCase.expect, Join(testCase.input, testCase.delimiter))

@@ -13,8 +13,8 @@ func Transpose[T any](matrix [][]T) [][]T {
 		result[i] = make([]T, rows)
 	}
 
-	for i := 0; i < rows; i++ {
-		for j := 0; j < cols; j++ {
+	for i := range rows {
+		for j := range cols {
 			result[j][i] = matrix[i][j]
 		}
 	}
