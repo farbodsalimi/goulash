@@ -14,6 +14,9 @@ func Transpose[T any](matrix [][]T) [][]T {
 	}
 
 	for i := range rows {
+		if len(matrix[i]) < cols {
+			cols = len(matrix[i])
+		}
 		for j := range cols {
 			result[j][i] = matrix[i][j]
 		}
