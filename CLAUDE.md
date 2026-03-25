@@ -4,79 +4,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Goulash is a Go utility library that provides functional programming utilities using Go generics. The library follows a flat package structure where each utility function is implemented in its own file with corresponding tests.
+Goulash is a Go utility library providing functional programming utilities using Go generics. Each utility function lives in its own file with a corresponding `_test.go` file, all in the root `goulash` package.
 
 ## Common Commands
 
-### Build
 ```bash
+# Build
 go build ./...
-```
 
-### Test
-```bash
-# Run all tests with coverage
+# Run all tests with verbose output and coverage
 go test -v -coverprofile=coverage.out ./...
 
-# Using Task runner
-task test
-```
+# Run a single test function
+go test -v -run TestFunctionName ./...
 
-### Task Runner
-The project uses [Task](https://taskfile.dev) for build automation:
-```bash
-# Run default build
-task
-
-# Run tests with coverage
-task test
-
-# Show coverage report (requires dokimi)
-task show-cover
+# Task runner (https://taskfile.dev)
+task          # build (default)
+task test     # tests with coverage
+task show-cover  # coverage report (requires dokimi)
 ```
 
 ## Code Architecture
 
-### Package Structure
-- **Root package**: All utility functions are in the main `goulash` package
-- **utils/**: Contains generic utility types and reflection helpers
-- **internal/generic/**: Internal generic utilities (currently empty directory)
-
-### Function Organization
-Each utility function follows this pattern:
-- `function.go` - Implementation
-- `function_test.go` - Comprehensive tests using testify
-
-### Dependencies
-- `golang.org/x/exp/constraints` - For generic type constraints
-- `github.com/stretchr/testify` - Testing framework
-- Uses Go 1.26 features
-
 ### Key Design Patterns
-1. **Generic Functions**: All functions use Go generics with appropriate constraints
-2. **Functional Style**: Functions are pure and composable (e.g., `__.Reduce(__.Map(__.Filter(...)))`)
-3. **Type Safety**: Heavy use of `constraints.Ordered` and reflection for type checking
-4. **Flat Structure**: Each function is a top-level export in the main package
+- **Flat structure**: Every function is a top-level export in the `goulash` package — one function per file (`function.go` + `function_test.go`)
+- **Generic functions**: All functions use Go generics with appropriate constraints (`constraints.Ordered`, `constraints.Integer | constraints.Float`, `comparable`, or `any`)
+- **Pure & composable**: Functions have no side effects and can be chained (e.g., `__.Reduce(__.Map(__.Filter(...)))`)
+- **Truthiness via zero-value comparison**: `All`, `Any`, and `Compact` treat the zero value of `T` as falsy (0 for numbers, "" for strings) using `var zero T` with `comparable`
 
 ### Import Convention
-The library is designed to be imported with an underscore alias:
+The library is designed to be imported with a double-underscore alias:
 ```go
 import __ "github.com/farbodsalimi/goulash"
 ```
 
-### Testing Approach
-- Uses testify for assertions and test structure
-- Each function has comprehensive test coverage including edge cases
-- Tests follow the pattern `TestFunctionName` with subtests for different scenarios
+### Dependencies
+- `golang.org/x/exp/constraints` — generic type constraints
+- `github.com/stretchr/testify` — testing (assertions + subtests)
+- Go 1.26
 
-## Available Functions
-
-The library provides comprehensive functional programming utilities including:
-- **Collection operations**: Filter, Map, Reduce, FlatMap, GroupBy, Partition
-- **Set operations**: Union, Intersection, Difference, Unique
-- **Aggregation**: All, Any, None, Min, Max, MinMax, Sum, Product, Count
-- **Transformation**: Chunk, Compact, Concat, Sort, Zip, Reverse, Flatten, Transpose
-- **Slicing**: Take, Drop, TakeWhile, DropWhile, Sliding
-- **Search & Find**: Contains, Find, FindIndex, IndexOf, LastIndexOf  
-- **Generation**: Range, Repeat, RandomSample, Permutations, Combinations
-- **Utility**: Join, Keys, Values, Ternary, ForEach, Fold, Scan
+### Testing
+- Uses testify for assertions
+- Tests follow `TestFunctionName` with table-driven subtests
+- Most tests use `t.Parallel()`
