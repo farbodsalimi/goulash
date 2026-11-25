@@ -1,8 +1,10 @@
 package goulash
 
+import "slices"
+
 func LastIndexOf[T comparable](slice []T, element T) int {
-	for i := len(slice) - 1; i >= 0; i-- {
-		if slice[i] == element {
+	for i, s := range slices.Backward(slice) {
+		if s == element {
 			return i
 		}
 	}
